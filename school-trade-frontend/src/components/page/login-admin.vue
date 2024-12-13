@@ -7,12 +7,12 @@
                     <span style='color: #e75c09'>管理员登录</span>
                 </div>
                 <el-form ref="form" :model="userForm">
-                    <el-input placeholder="请输入管理员账号" v-model="userForm.accountNumber" class="login-input">
+                    <el-input placeholder="请输入管理员正确的账号" v-model="userForm.accountNumber" class="login-input">
                         <template slot="prepend">
                             <div class="el-icon-user-solid"></div>
                         </template>
                     </el-input>
-                    <el-input placeholder="请输入管理员密码" v-model="userForm.adminPassword" class="login-input"
+                    <el-input placeholder="请输入管理员正确的密码" v-model="userForm.adminPassword" class="login-input"
                               @keyup.enter.native="login"  show-password>
                         <template slot="prepend">
                             <div class="el-icon-lock"></div>

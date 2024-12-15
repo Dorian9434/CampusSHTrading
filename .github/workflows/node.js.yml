@@ -1,0 +1,29 @@
+# .github/workflows/node.js.yml
+# 当前整个文件就是一个Workflows
+
+name: Node.js CI # 工作流的名称
+
+on: # 执行该工作流的事件, 上图的Events
+  push:
+    branches: [main] # 当main分支push之后就执行该工作流
+  pull_request:
+    branches: [main] # 当main分支pull_request就执行该工作流
+
+jobs: # 执行的一组任务, 上图中的Jobs
+  build:
+    runs-on: ubuntu-latest # 在什么机器上执行, 上图中的Runner
+
+    strategy: # 矩阵策略
+      matrix:
+        node-version: [12.x, 14.x, 16.x] # 等同于使用12.x、14.x、16.x三个不同node版本的job跑同一个工作流
+
+    steps: # 要执行的步骤 上图中的Actions
+      - uses: actions/checkout@v3 # 相当于git clone到当前运行的机器上
+      - name: Use Node.js ${{ matrix.node-version }} # 显示在step上的别名
+        uses: actions/setup-node@v3 # 设置node环境(可以使用npm、yarn, 选择指定的node版本)
+        with: # 传入参数
+          node-version: ${{ matrix.node-version }} # 指定什么版本 ${{}} 引用变量
+          cache: 'npm' #
+      - run: npm ci # 运行npm ci
+      - run: npm run build --if-present # 运行npm run build 命令
+      - run: npm test # 运行 npm test

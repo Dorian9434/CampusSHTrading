@@ -5,9 +5,9 @@ name: Node.js CI # 工作流的名称
 
 on: # 执行该工作流的事件, 上图的Events
   push:
-    branches: [main] # 当main分支push之后就执行该工作流
+    branches: [master] # 当main分支push之后就执行该工作流
   pull_request:
-    branches: [main] # 当main分支pull_request就执行该工作流
+    branches: [master] # 当main分支pull_request就执行该工作流
 
 jobs: # 执行的一组任务, 上图中的Jobs
   build:

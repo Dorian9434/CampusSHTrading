@@ -3,7 +3,7 @@ name: Build and Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # 指定触发部署的分支，通常是main或master
+      - main  # 指定触发部署的分支
  
 jobs:
   build-and-deploy:
@@ -32,5 +32,5 @@ jobs:
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BRANCH: gh-pages  # 部署到gh-pages分支
-        FOLDER: build  # 指定构建目录，根据您的构建工具可能不同，如'build'或'dist'
+        FOLDER: build  # 指定构建目录
         CLEAN: true  # 清理旧文件
